@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import com.capgemini.simpleapp.entities.Customer;
 import com.capgemini.simpleapp.exception.AccountNotFoundException;
+import com.capgemini.simpleapp.exception.InsufficientAccountBalanceException;
+import com.capgemini.simpleapp.exception.NegativeAmountException;
 
 @ControllerAdvice
 public class ExceptionController {
@@ -23,4 +25,13 @@ System.out.println(exception);
 		return "wrongCredentials";
 	}
 	
+	@ExceptionHandler(value=InsufficientAccountBalanceException.class)
+	public String notEnoughBalance() {
+		return "transferMoney";
+	}
+	
+	@ExceptionHandler(value=NegativeAmountException.class)
+	public String negativeAmount() {
+		return "transferMoney";
+	}
 }
