@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.capgemini.simpleapp.entities.Customer;
 import com.capgemini.simpleapp.entities.Customer.loginCheck;
@@ -63,10 +64,11 @@ public class CustomerController {
 			System.out.println(customer);
 	          return "login";
 	      }*/
-			
+				//ModelAndView m1=null;
 //				System.out.println(customer.getCustomerId());
 //				System.out.println(customer.getPassword());
 				customer = service.authenticate(customer);
+//				model.addAttribute("customer", customer);
 				System.out.println(customer.toString());
 				session.setAttribute("customer", customer);
 				return "dashboard";
